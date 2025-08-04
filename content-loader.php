@@ -43,11 +43,39 @@ class ContentLoader {
     }
     
     public function getContent($elementId, $default = '') {
-        return $this->contentCache[$elementId]['content'] ?? $default;
+        $content = $this->contentCache[$elementId]['content'] ?? $default;
+        $type = $this->getContentType($elementId);
+        
+        // Handle JSON image data
+        if ($type === 'image') {
+            $imageData = json_decode($content, true);
+            if ($imageData && isset($imageData['src'])) {
+                return $imageData['src'];
+            }
+            return $default;
+        }
+        
+        return $content;
     }
     
     public function getContentType($elementId) {
         return $this->contentCache[$elementId]['type'] ?? 'text';
+    }
+    
+    public function getImageAlt($elementId, $default = '') {
+        $content = $this->contentCache[$elementId]['content'] ?? $default;
+        $type = $this->getContentType($elementId);
+        
+        // Handle JSON image data
+        if ($type === 'image') {
+            $imageData = json_decode($content, true);
+            if ($imageData && isset($imageData['alt'])) {
+                return $imageData['alt'];
+            }
+            return $default;
+        }
+        
+        return $default;
     }
     
     public function getAllContent() {
@@ -117,6 +145,15 @@ function getYouTubeVideoId($elementId, $default = 'oo74I-aNlUw') {
     global $contentLoader;
     if ($contentLoader) {
         return $contentLoader->renderYouTubeVideo($elementId, $default);
+    }
+    return $default;
+}
+
+// Helper function to get image alt text
+function getImageAlt($elementId, $default = '') {
+    global $contentLoader;
+    if ($contentLoader) {
+        return $contentLoader->getImageAlt($elementId, $default);
     }
     return $default;
 }

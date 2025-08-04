@@ -52,10 +52,49 @@ class ContentEditor {
                 </div>
                 <div class="editor-message" style="display: none;"></div>
                 <form class="editor-form">
-                    <div class="editor-form-group">
+                    <!-- Single field form (default) -->
+                    <div class="editor-form-group" id="single-field-group">
                         <label class="editor-label" for="editor-content">Content</label>
                         <textarea class="editor-textarea" id="editor-content" placeholder="Enter content..."></textarea>
                     </div>
+                    
+                    <!-- Dual field form (for URL elements) -->
+                    <div class="editor-form-group" id="dual-field-group" style="display: none;">
+                        <div class="editor-form-row">
+                            <div class="editor-form-col">
+                                <label class="editor-label" for="editor-text-content">Button Text</label>
+                                <input type="text" class="editor-input" id="editor-text-content" placeholder="Enter button text...">
+                            </div>
+                            <div class="editor-form-col">
+                                <label class="editor-label" for="editor-url-content">URL/Link</label>
+                                <input type="url" class="editor-input" id="editor-url-content" placeholder="Enter URL...">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Image upload form -->
+                    <div class="editor-form-group" id="image-field-group" style="display: none;">
+                        <div class="editor-image-preview">
+                            <img id="editor-image-preview" src="" alt="Preview" style="display: none;">
+                        </div>
+                        <div class="editor-form-row">
+                            <div class="editor-form-col">
+                                <label class="editor-label" for="editor-image-file">Upload New Image</label>
+                                <input type="file" class="editor-input" id="editor-image-file" accept="image/*">
+                            </div>
+                            <div class="editor-form-col">
+                                <label class="editor-label" for="editor-image-alt">Alt Text</label>
+                                <input type="text" class="editor-input" id="editor-image-alt" placeholder="Enter alt text...">
+                            </div>
+                        </div>
+                        <div class="editor-form-row">
+                            <div class="editor-form-col">
+                                <label class="editor-label" for="editor-image-url">Or Enter Image URL</label>
+                                <input type="url" class="editor-input" id="editor-image-url" placeholder="Enter image URL...">
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="editor-buttons">
                         <button type="button" class="editor-btn editor-btn-secondary" data-action="cancel">Cancel</button>
                         <button type="submit" class="editor-btn editor-btn-primary" data-action="save">
@@ -107,101 +146,21 @@ class ContentEditor {
     }
 
     makeElementsEditable() {
-        // Define editable elements with their selectors and content types
-        const editableElements = [
-            // Hero Section
-            { selector: '.hero .section-title h3', type: 'text', id: 'hero-subtitle' },
-            { selector: '.hero .section-title h1', type: 'text', id: 'hero-title' },
-            { selector: '.hero .section-title p', type: 'text', id: 'hero-description' },
-            { selector: '.hero .hero-btn .btn-highlighted', type: 'text', id: 'hero-btn-primary' },
-            { selector: '.hero .hero-btn .btn-default:not(.btn-highlighted)', type: 'text', id: 'hero-btn-secondary' },
-            { selector: '.hero.hero-video', type: 'url', id: 'hero-video-url' },
-
-            // About/Collaboration Section
-            { selector: '.about-us .section-title h3', type: 'text', id: 'about-subtitle' },
-            { selector: '.about-us .section-title h2', type: 'text', id: 'about-title' },
-            { selector: '.about-us .section-title-content p', type: 'text', id: 'about-description' },
-            { selector: '.about-us .section-btn .btn-default', type: 'text', id: 'about-btn' },
-
-            // Counter Items
-            { selector: '.about-counter-item:nth-child(1) .counter', type: 'number', id: 'counter-1-value' },
-            { selector: '.about-counter-item:nth-child(1) h3', type: 'text', id: 'counter-1-label' },
-            { selector: '.about-counter-item:nth-child(2) .counter', type: 'number', id: 'counter-2-value' },
-            { selector: '.about-counter-item:nth-child(2) h3', type: 'text', id: 'counter-2-label' },
-            { selector: '.about-counter-item:nth-child(3) .counter', type: 'number', id: 'counter-3-value' },
-            { selector: '.about-counter-item:nth-child(3) h3', type: 'text', id: 'counter-3-label' },
-            { selector: '.about-counter-item:nth-child(4) .counter', type: 'number', id: 'counter-4-value' },
-            { selector: '.about-counter-item:nth-child(4) h3', type: 'text', id: 'counter-4-label' },
-
-            // Team Section
-            { selector: '.our-team .section-title h3', type: 'text', id: 'team-subtitle' },
-            { selector: '.our-team .section-title h2', type: 'text', id: 'team-title' },
-            { selector: '.section-footer-btn .btn-default', type: 'text', id: 'team-btn' },
-
-            // Team Members
-            { selector: '.team-item:nth-child(1) .team-content h3 a', type: 'text', id: 'team-member-1-name' },
-            { selector: '.team-item:nth-child(1) .team-content p', type: 'text', id: 'team-member-1-role' },
-            { selector: '.team-item:nth-child(1) .yield-indicator', type: 'text', id: 'team-member-1-indicator' },
-            { selector: '.team-item:nth-child(2) .team-content h3 a', type: 'text', id: 'team-member-2-name' },
-            { selector: '.team-item:nth-child(2) .team-content p', type: 'text', id: 'team-member-2-role' },
-            { selector: '.team-item:nth-child(2) .yield-indicator', type: 'text', id: 'team-member-2-indicator' },
-            { selector: '.team-item:nth-child(3) .team-content h3 a', type: 'text', id: 'team-member-3-name' },
-            { selector: '.team-item:nth-child(3) .team-content p', type: 'text', id: 'team-member-3-role' },
-            { selector: '.team-item:nth-child(3) .yield-indicator', type: 'text', id: 'team-member-3-indicator' },
-            { selector: '.team-item:nth-child(4) .team-content h3 a', type: 'text', id: 'team-member-4-name' },
-            { selector: '.team-item:nth-child(4) .team-content p', type: 'text', id: 'team-member-4-role' },
-            { selector: '.team-item:nth-child(4) .yield-indicator', type: 'text', id: 'team-member-4-indicator' },
-
-            // Partnership Showcase
-            { selector: '.intro-video .section-title h3', type: 'text', id: 'showcase-subtitle' },
-            { selector: '.intro-video .section-title h2', type: 'text', id: 'showcase-title' },
-            { selector: '.intro-video .popup-video', type: 'url', id: 'showcase-video-url' },
-
-            // Gallery Section
-            { selector: '.our-gallery .section-title h3', type: 'text', id: 'gallery-subtitle' },
-            { selector: '.our-gallery .section-title h2', type: 'text', id: 'gallery-title' },
-
-            // Testimonials Section
-            { selector: '.our-testimonial .section-title h3', type: 'text', id: 'testimonials-subtitle' },
-            { selector: '.our-testimonial .section-title h2', type: 'text', id: 'testimonials-title' },
-            { selector: '.testimonial-item:nth-child(1) .testimonial-content p', type: 'text', id: 'testimonial-1-content' },
-            { selector: '.testimonial-item:nth-child(1) .author-content h3', type: 'text', id: 'testimonial-1-author' },
-            { selector: '.testimonial-item:nth-child(2) .testimonial-content p', type: 'text', id: 'testimonial-2-content' },
-            { selector: '.testimonial-item:nth-child(2) .author-content h3', type: 'text', id: 'testimonial-2-author' },
-            { selector: '.testimonial-item:nth-child(3) .testimonial-content p', type: 'text', id: 'testimonial-3-content' },
-            { selector: '.testimonial-item:nth-child(3) .author-content h3', type: 'text', id: 'testimonial-3-author' },
-
-            // Blog Section
-            { selector: '.our-blog .section-title h3', type: 'text', id: 'blog-subtitle' },
-            { selector: '.our-blog .section-title h2', type: 'text', id: 'blog-title' },
-            { selector: '.post-item:nth-child(1) .post-item-content h3 a', type: 'text', id: 'blog-post-1-title' },
-            { selector: '.post-item:nth-child(1) .post-meta ul li:first-child', type: 'text', id: 'blog-post-1-author' },
-            { selector: '.post-item:nth-child(1) .post-meta ul li:last-child', type: 'text', id: 'blog-post-1-date' },
-            { selector: '.post-item:nth-child(2) .post-item-content h3 a', type: 'text', id: 'blog-post-2-title' },
-            { selector: '.post-item:nth-child(2) .post-meta ul li:first-child', type: 'text', id: 'blog-post-2-author' },
-            { selector: '.post-item:nth-child(2) .post-meta ul li:last-child', type: 'text', id: 'blog-post-2-date' },
-            { selector: '.post-item:nth-child(3) .post-item-content h3 a', type: 'text', id: 'blog-post-3-title' },
-            { selector: '.post-item:nth-child(3) .post-meta ul li:first-child', type: 'text', id: 'blog-post-3-author' },
-            { selector: '.post-item:nth-child(3) .post-meta ul li:last-child', type: 'text', id: 'blog-post-3-date' },
-
-            // CTA Section
-            { selector: '.cta-box .section-title h2', type: 'text', id: 'cta-title' },
-            { selector: '.cta-box .section-btn .btn-default', type: 'text', id: 'cta-btn' },
-
-            // Footer Section
-            { selector: '.footer-contact-box ul li:first-child', type: 'text', id: 'footer-address' },
-            { selector: '.footer-contact-box ul li:nth-child(2) a', type: 'email', id: 'footer-email' },
-            { selector: '.footer-contact-box ul li:nth-child(3) a', type: 'phone', id: 'footer-phone' },
-            { selector: '.footer-links:nth-child(3) p', type: 'text', id: 'footer-newsletter' },
-            { selector: '.footer-copyright-text p', type: 'text', id: 'footer-copyright' }
-        ];
-
-        editableElements.forEach(config => {
-            const element = document.querySelector(config.selector);
-            if (element) {
+        // Find all elements with data-editor-id attributes and make them editable
+        const editableElements = document.querySelectorAll('[data-editor-id]');
+        
+        editableElements.forEach(element => {
+            const editorId = element.getAttribute('data-editor-id');
+            const editorType = element.getAttribute('data-editor-type');
+            
+            if (editorId && editorType) {
                 element.classList.add('editable-element');
-                element.setAttribute('data-editor-id', config.id);
-                element.setAttribute('data-editor-type', config.type);
+                
+                const config = {
+                    id: editorId,
+                    type: editorType
+                };
+                
                 element.addEventListener('click', (e) => this.handleElementClick(e, config));
             }
         });
@@ -244,41 +203,116 @@ class ContentEditor {
     openModal(config) {
         const modal = this.modal;
         const title = modal.querySelector('.editor-modal-title');
+        const singleFieldGroup = modal.querySelector('#single-field-group');
+        const dualFieldGroup = modal.querySelector('#dual-field-group');
+        const imageFieldGroup = modal.querySelector('#image-field-group');
         const textarea = modal.querySelector('#editor-content');
-        const label = modal.querySelector('.editor-label');
+        const textInput = modal.querySelector('#editor-text-content');
+        const urlInput = modal.querySelector('#editor-url-content');
+        const imageFileInput = modal.querySelector('#editor-image-file');
+        const imageAltInput = modal.querySelector('#editor-image-alt');
+        const imageUrlInput = modal.querySelector('#editor-image-url');
+        const imagePreview = modal.querySelector('#editor-image-preview');
 
-        // Set modal title and label
+        // Set modal title
         title.textContent = `Edit ${config.id.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}`;
-        label.textContent = this.getLabelForType(config.type);
 
-        // Get current content
-        let currentContent = '';
-        if (config.type === 'url') {
-            if (config.id === 'hero-video-url') {
-                // For hero video, get the YouTube video ID and convert to full URL
-                const heroVideo = document.querySelector('#herovideo');
-                if (heroVideo) {
-                    const dataProperty = heroVideo.getAttribute('data-property');
-                    if (dataProperty) {
-                        const match = dataProperty.match(/videoURL:'([^']+)'/);
-                        const videoId = match ? match[1] : '';
-                        // Convert video ID to full YouTube URL for user editing
-                        currentContent = videoId ? `https://www.youtube.com/watch?v=${videoId}` : '';
-                    }
-                }
-            } else {
-                currentContent = this.currentEditingElement.element.getAttribute('href') || 
-                               this.currentEditingElement.element.getAttribute('data-property') || '';
+        // Show appropriate form based on content type
+        if (config.type === 'image') {
+            // Show image upload form
+            singleFieldGroup.style.display = 'none';
+            dualFieldGroup.style.display = 'none';
+            imageFieldGroup.style.display = 'block';
+            
+            // Get current image data
+            const imgElement = this.currentEditingElement.element.tagName === 'IMG' 
+                ? this.currentEditingElement.element 
+                : this.currentEditingElement.element.querySelector('img');
+            
+            if (imgElement) {
+                const currentSrc = imgElement.getAttribute('src') || '';
+                const currentAlt = imgElement.getAttribute('alt') || '';
+                
+                // Show current image preview
+                imagePreview.src = currentSrc;
+                imagePreview.style.display = 'block';
+                
+                // Populate fields
+                imageAltInput.value = currentAlt;
+                imageUrlInput.value = currentSrc;
             }
-        } else if (config.type === 'number') {
-            currentContent = this.currentEditingElement.element.textContent;
+            
+            // Set up file input change handler
+            imageFileInput.onchange = (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        imagePreview.src = e.target.result;
+                        imagePreview.style.display = 'block';
+                        imageUrlInput.value = ''; // Clear URL input when file is selected
+                    };
+                    reader.readAsDataURL(file);
+                }
+            };
+            
+            // Focus on alt text input
+            imageAltInput.focus();
+        } else if (config.type === 'url' && !config.id.includes('hero-video')) {
+            // Show dual field form for URL elements (except hero video)
+            singleFieldGroup.style.display = 'none';
+            dualFieldGroup.style.display = 'block';
+            imageFieldGroup.style.display = 'none';
+            
+            // Get current text content (from span inside the link)
+            const textSpan = this.currentEditingElement.element.querySelector('span[data-editor-id]');
+            const currentText = textSpan ? textSpan.textContent : this.currentEditingElement.element.textContent;
+            
+            // Get current URL
+            const currentUrl = this.currentEditingElement.element.getAttribute('href') || '';
+            
+            // Populate both fields
+            textInput.value = currentText;
+            urlInput.value = currentUrl;
+            
+            // Focus on text input
+            textInput.focus();
         } else {
-            currentContent = this.currentEditingElement.element.textContent;
+            // Show single field form for other content types
+            singleFieldGroup.style.display = 'block';
+            dualFieldGroup.style.display = 'none';
+            imageFieldGroup.style.display = 'none';
+            
+            // Get current content
+            let currentContent = '';
+            if (config.type === 'url') {
+                if (config.id === 'hero-video-url') {
+                    // For hero video, get the YouTube video ID and convert to full URL
+                    const heroVideo = document.querySelector('#herovideo');
+                    if (heroVideo) {
+                        const dataProperty = heroVideo.getAttribute('data-property');
+                        if (dataProperty) {
+                            const match = dataProperty.match(/videoURL:'([^']+)'/);
+                            const videoId = match ? match[1] : '';
+                            // Convert video ID to full YouTube URL for user editing
+                            currentContent = videoId ? `https://www.youtube.com/watch?v=${videoId}` : '';
+                        }
+                    }
+                } else {
+                    currentContent = this.currentEditingElement.element.getAttribute('href') || 
+                                   this.currentEditingElement.element.getAttribute('data-property') || '';
+                }
+            } else if (config.type === 'number') {
+                currentContent = this.currentEditingElement.element.textContent;
+            } else {
+                currentContent = this.currentEditingElement.element.textContent;
+            }
+
+            textarea.value = currentContent;
+            textarea.focus();
         }
 
-        textarea.value = currentContent;
         modal.classList.add('active');
-        textarea.focus();
     }
 
     closeModal() {
@@ -312,11 +346,50 @@ class ContentEditor {
         const saveBtn = e.target.querySelector('[data-action="save"]');
         const loading = saveBtn.querySelector('.editor-loading');
         const textarea = this.modal.querySelector('#editor-content');
-        const content = textarea.value.trim();
+        const textInput = this.modal.querySelector('#editor-text-content');
+        const urlInput = this.modal.querySelector('#editor-url-content');
+        const imageFileInput = this.modal.querySelector('#editor-image-file');
+        const imageAltInput = this.modal.querySelector('#editor-image-alt');
+        const imageUrlInput = this.modal.querySelector('#editor-image-url');
 
-        if (!content) {
-            this.showMessage('Content cannot be empty', 'error');
-            return;
+        // Determine which form is active and get content
+        let content = '';
+        let isDualField = false;
+        let isImageField = false;
+        
+        if (imageFileInput && imageFileInput.style.display !== 'none') {
+            // Image upload form is active
+            isImageField = true;
+            const imageFile = imageFileInput.files[0];
+            const imageAlt = imageAltInput.value.trim();
+            const imageUrl = imageUrlInput.value.trim();
+            
+            if (!imageAlt) {
+                this.showMessage('Alt text is required', 'error');
+                return;
+            }
+            
+            content = { file: imageFile, alt: imageAlt, url: imageUrl };
+        } else if (textInput && urlInput && textInput.style.display !== 'none') {
+            // Dual field form is active
+            isDualField = true;
+            const textContent = textInput.value.trim();
+            const urlContent = urlInput.value.trim();
+            
+            if (!textContent || !urlContent) {
+                this.showMessage('Both text and URL fields are required', 'error');
+                return;
+            }
+            
+            content = { text: textContent, url: urlContent };
+        } else {
+            // Single field form is active
+            content = textarea.value.trim();
+            
+            if (!content) {
+                this.showMessage('Content cannot be empty', 'error');
+                return;
+            }
         }
 
         // Show loading state
@@ -325,29 +398,96 @@ class ContentEditor {
         saveBtn.textContent = 'Saving...';
 
         try {
-            // For hero video URL, extract video ID before saving
-            let contentToSave = content;
-            if (this.currentEditingElement.config.id === 'hero-video-url') {
-                const videoId = this.extractYouTubeId(content);
-                if (!videoId) {
-                    this.showMessage('Please enter a valid YouTube URL', 'error');
-                    return;
+            if (isImageField) {
+                // Handle image upload
+                const config = this.currentEditingElement.config;
+                
+                // Create FormData for file upload
+                const formData = new FormData();
+                formData.append('elementId', config.id);
+                formData.append('contentType', 'image');
+                formData.append('alt', content.alt);
+                
+                if (content.file) {
+                    // Upload file
+                    formData.append('image', content.file);
+                    const response = await this.uploadImage(formData);
+                    
+                    if (response.success) {
+                        this.updateElementContent({ src: response.imageUrl, alt: content.alt });
+                        this.showMessage('Image uploaded successfully!', 'success');
+                        setTimeout(() => this.closeModal(), 1500);
+                    } else {
+                        this.showMessage(response.message || 'Failed to upload image', 'error');
+                    }
+                } else if (content.url) {
+                    // Save URL directly
+                    const response = await this.saveContent({
+                        elementId: config.id,
+                        contentType: 'image',
+                        content: JSON.stringify({ src: content.url, alt: content.alt })
+                    });
+                    
+                    if (response.success) {
+                        this.updateElementContent({ src: content.url, alt: content.alt });
+                        this.showMessage('Image URL saved successfully!', 'success');
+                        setTimeout(() => this.closeModal(), 1500);
+                    } else {
+                        this.showMessage(response.message || 'Failed to save image URL', 'error');
+                    }
+                } else {
+                    this.showMessage('Please select a file or enter an image URL', 'error');
                 }
-                contentToSave = videoId; // Save only the video ID to database
-            }
-
-            const response = await this.saveContent({
-                elementId: this.currentEditingElement.config.id,
-                contentType: this.currentEditingElement.config.type,
-                content: contentToSave
-            });
-
-            if (response.success) {
-                this.updateElementContent(contentToSave);
-                this.showMessage('Content saved successfully!', 'success');
-                setTimeout(() => this.closeModal(), 1500);
+            } else if (isDualField) {
+                // Handle dual field saving for URL elements
+                const config = this.currentEditingElement.config;
+                
+                // Save text content
+                const textResponse = await this.saveContent({
+                    elementId: config.id.replace('-link', ''), // Remove '-link' suffix for text
+                    contentType: 'text',
+                    content: content.text
+                });
+                
+                // Save URL content
+                const urlResponse = await this.saveContent({
+                    elementId: config.id,
+                    contentType: 'url',
+                    content: content.url
+                });
+                
+                if (textResponse.success && urlResponse.success) {
+                    this.updateElementContent(content);
+                    this.showMessage('Content saved successfully!', 'success');
+                    setTimeout(() => this.closeModal(), 1500);
+                } else {
+                    this.showMessage('Failed to save content', 'error');
+                }
             } else {
-                this.showMessage(response.message || 'Failed to save content', 'error');
+                // Handle single field saving
+                let contentToSave = content;
+                if (this.currentEditingElement.config.id === 'hero-video-url') {
+                    const videoId = this.extractYouTubeId(content);
+                    if (!videoId) {
+                        this.showMessage('Please enter a valid YouTube URL', 'error');
+                        return;
+                    }
+                    contentToSave = videoId; // Save only the video ID to database
+                }
+
+                const response = await this.saveContent({
+                    elementId: this.currentEditingElement.config.id,
+                    contentType: this.currentEditingElement.config.type,
+                    content: contentToSave
+                });
+
+                if (response.success) {
+                    this.updateElementContent(contentToSave);
+                    this.showMessage('Content saved successfully!', 'success');
+                    setTimeout(() => this.closeModal(), 1500);
+                } else {
+                    this.showMessage(response.message || 'Failed to save content', 'error');
+                }
             }
         } catch (error) {
             console.error('Save error:', error);
@@ -363,6 +503,48 @@ class ContentEditor {
     updateElementContent(content) {
         const { element, config } = this.currentEditingElement;
         
+        // Handle image content
+        if (config.type === 'image') {
+            const imgElement = element.tagName === 'IMG' 
+                ? element 
+                : element.querySelector('img');
+            
+            if (imgElement) {
+                if (typeof content === 'object' && content.src) {
+                    // Update image src and alt
+                    imgElement.setAttribute('src', content.src);
+                    if (content.alt) {
+                        imgElement.setAttribute('alt', content.alt);
+                    }
+                } else {
+                    // Handle JSON string content from database
+                    try {
+                        const imageData = JSON.parse(content);
+                        imgElement.setAttribute('src', imageData.src);
+                        if (imageData.alt) {
+                            imgElement.setAttribute('alt', imageData.alt);
+                        }
+                    } catch (e) {
+                        // Fallback to treating content as src
+                        imgElement.setAttribute('src', content);
+                    }
+                }
+            }
+            return;
+        }
+        
+        // Handle dual-field content (for URL elements)
+        if (typeof content === 'object' && content.text && content.url) {
+            // Update both text and URL
+            const textSpan = element.querySelector('span[data-editor-id]');
+            if (textSpan) {
+                textSpan.textContent = content.text;
+            }
+            element.setAttribute('href', content.url);
+            return;
+        }
+        
+        // Handle single-field content
         if (config.type === 'url') {
             if (config.id === 'hero-video-url') {
                 // Update YouTube video URL - find the actual hero video element
@@ -403,6 +585,15 @@ class ContentEditor {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(data)
+        });
+
+        return await response.json();
+    }
+
+    async uploadImage(formData) {
+        const response = await fetch(this.apiEndpoint, {
+            method: 'POST',
+            body: formData // FormData will set the correct Content-Type
         });
 
         return await response.json();

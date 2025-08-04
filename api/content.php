@@ -87,6 +87,12 @@ class ContentAPI {
     }
 
     private function saveContent() {
+        // Check if this is a file upload (FormData) or JSON request
+        if (isset($_FILES['image'])) {
+            $this->handleImageUpload();
+            return;
+        }
+
         $input = json_decode(file_get_contents('php://input'), true);
         
         if (!$input) {
@@ -102,7 +108,7 @@ class ContentAPI {
         }
 
         // Validate content type
-        $validTypes = ['text', 'url', 'email', 'phone', 'number'];
+        $validTypes = ['text', 'url', 'email', 'phone', 'number', 'image'];
         if (!in_array($contentType, $validTypes)) {
             $this->sendError('Invalid content type');
         }
@@ -145,6 +151,89 @@ class ContentAPI {
                 'elementId' => $elementId,
                 'content' => $content,
                 'contentType' => $contentType
+            ]);
+
+        } catch (PDOException $e) {
+            $this->sendError('Database error: ' . $e->getMessage());
+        }
+    }
+
+    private function handleImageUpload() {
+        $elementId = $_POST['elementId'] ?? '';
+        $contentType = $_POST['contentType'] ?? '';
+        $alt = $_POST['alt'] ?? '';
+        $imageFile = $_FILES['image'] ?? null;
+
+        if (empty($elementId) || empty($contentType) || !$imageFile) {
+            $this->sendError('Missing required fields for image upload');
+        }
+
+        if ($contentType !== 'image') {
+            $this->sendError('Invalid content type for image upload');
+        }
+
+        // Validate file
+        $allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif', 'image/webp'];
+        if (!in_array($imageFile['type'], $allowedTypes)) {
+            $this->sendError('Invalid file type. Only JPEG, PNG, GIF, and WebP are allowed.');
+        }
+
+        $maxSize = 5 * 1024 * 1024; // 5MB
+        if ($imageFile['size'] > $maxSize) {
+            $this->sendError('File too large. Maximum size is 5MB.');
+        }
+
+        // Create uploads directory if it doesn't exist
+        $uploadDir = '../images/uploads/';
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0755, true);
+        }
+
+        // Generate unique filename
+        $extension = pathinfo($imageFile['name'], PATHINFO_EXTENSION);
+        $filename = uniqid() . '_' . time() . '.' . $extension;
+        $filepath = $uploadDir . $filename;
+
+        // Move uploaded file
+        if (!move_uploaded_file($imageFile['tmp_name'], $filepath)) {
+            $this->sendError('Failed to save uploaded file');
+        }
+
+        // Create image data for database
+        $imageData = [
+            'src' => 'images/uploads/' . $filename,
+            'alt' => $alt
+        ];
+
+        $content = json_encode($imageData);
+
+        try {
+            // Check if content already exists
+            $stmt = $this->db->prepare("SELECT id FROM content_blocks WHERE element_id = ?");
+            $stmt->execute([$elementId]);
+            $exists = $stmt->fetch();
+
+            if ($exists) {
+                // Update existing content
+                $stmt = $this->db->prepare("
+                    UPDATE content_blocks 
+                    SET content = ?, content_type = ?, updated_at = CURRENT_TIMESTAMP 
+                    WHERE element_id = ?
+                ");
+                $stmt->execute([$content, $contentType, $elementId]);
+            } else {
+                // Insert new content
+                $stmt = $this->db->prepare("
+                    INSERT INTO content_blocks (element_id, content_type, content) 
+                    VALUES (?, ?, ?)
+                ");
+                $stmt->execute([$elementId, $contentType, $content]);
+            }
+
+            $this->sendSuccess('Image uploaded successfully', [
+                'elementId' => $elementId,
+                'imageUrl' => $imageData['src'],
+                'alt' => $alt
             ]);
 
         } catch (PDOException $e) {
