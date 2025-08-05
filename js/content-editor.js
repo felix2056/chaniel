@@ -67,7 +67,7 @@ class ContentEditor {
                             </div>
                             <div class="editor-form-col">
                                 <label class="editor-label" for="editor-url-content">URL/Link</label>
-                                <input type="url" class="editor-input" id="editor-url-content" placeholder="Enter URL...">
+                                <input type="text" class="editor-input" id="editor-url-content" placeholder="Enter URL...">
                             </div>
                         </div>
                     </div>
@@ -357,20 +357,25 @@ class ContentEditor {
         let isDualField = false;
         let isImageField = false;
         
-        if (imageFileInput && imageFileInput.style.display !== 'none') {
+        // Check which form group is visible to determine the active form
+        const singleFieldGroup = this.modal.querySelector('#single-field-group');
+        const dualFieldGroup = this.modal.querySelector('#dual-field-group');
+        const imageFieldGroup = this.modal.querySelector('#image-field-group');
+        
+        if (imageFieldGroup && imageFieldGroup.style.display === 'block') {
             // Image upload form is active
             isImageField = true;
             const imageFile = imageFileInput.files[0];
             const imageAlt = imageAltInput.value.trim();
             const imageUrl = imageUrlInput.value.trim();
             
-            if (!imageAlt) {
-                this.showMessage('Alt text is required', 'error');
-                return;
-            }
+            // if (!imageAlt) {
+            //     this.showMessage('Alt text is required', 'error');
+            //     return;
+            // }
             
             content = { file: imageFile, alt: imageAlt, url: imageUrl };
-        } else if (textInput && urlInput && textInput.style.display !== 'none') {
+        } else if (dualFieldGroup && dualFieldGroup.style.display === 'block') {
             // Dual field form is active
             isDualField = true;
             const textContent = textInput.value.trim();
@@ -382,13 +387,46 @@ class ContentEditor {
             }
             
             content = { text: textContent, url: urlContent };
-        } else {
+        } else if (singleFieldGroup && singleFieldGroup.style.display === 'block') {
             // Single field form is active
             content = textarea.value.trim();
             
             if (!content) {
                 this.showMessage('Content cannot be empty', 'error');
                 return;
+            }
+        } else {
+            // Fallback: determine by config type
+            if (this.currentEditingElement.config.type === 'image') {
+                isImageField = true;
+                const imageFile = imageFileInput.files[0];
+                const imageAlt = imageAltInput.value.trim();
+                const imageUrl = imageUrlInput.value.trim();
+                
+                if (!imageAlt) {
+                    this.showMessage('Alt text is required', 'error');
+                    return;
+                }
+                
+                content = { file: imageFile, alt: imageAlt, url: imageUrl };
+            } else if (this.currentEditingElement.config.type === 'url' && !this.currentEditingElement.config.id.includes('hero-video')) {
+                isDualField = true;
+                const textContent = textInput.value.trim();
+                const urlContent = urlInput.value.trim();
+                
+                if (!textContent || !urlContent) {
+                    this.showMessage('Both text and URL fields are required', 'error');
+                    return;
+                }
+                
+                content = { text: textContent, url: urlContent };
+            } else {
+                content = textarea.value.trim();
+                
+                if (!content) {
+                    this.showMessage('Content cannot be empty', 'error');
+                    return;
+                }
             }
         }
 
@@ -414,7 +452,7 @@ class ContentEditor {
                     const response = await this.uploadImage(formData);
                     
                     if (response.success) {
-                        this.updateElementContent({ src: response.imageUrl, alt: content.alt });
+                        this.updateElementContent({ imageUrl: response.imageUrl, alt: content.alt });
                         this.showMessage('Image uploaded successfully!', 'success');
                         setTimeout(() => this.closeModal(), 1500);
                     } else {
@@ -510,11 +548,20 @@ class ContentEditor {
                 : element.querySelector('img');
             
             if (imgElement) {
-                if (typeof content === 'object' && content.src) {
-                    // Update image src and alt
-                    imgElement.setAttribute('src', content.src);
-                    if (content.alt) {
-                        imgElement.setAttribute('alt', content.alt);
+                if (typeof content === 'object') {
+                    // Handle response object from image upload
+                    if (content.imageUrl) {
+                        // Update image src and alt from upload response
+                        imgElement.setAttribute('src', content.imageUrl);
+                        if (content.alt) {
+                            imgElement.setAttribute('alt', content.alt);
+                        }
+                    } else if (content.src) {
+                        // Update image src and alt from database object
+                        imgElement.setAttribute('src', content.src);
+                        if (content.alt) {
+                            imgElement.setAttribute('alt', content.alt);
+                        }
                     }
                 } else {
                     // Handle JSON string content from database

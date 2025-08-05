@@ -110,14 +110,10 @@ try {
         ['element_id' => 'about-image-src', 'content_type' => 'image', 'content' => '{"src":"/images/media/about.png","alt":"CHANEL x LEE JUN HO Partnership"}'],
         ['element_id' => 'about-image-alt', 'content_type' => 'text', 'content' => 'CHANEL x LEE JUN HO Partnership'],
         
-        ['element_id' => 'team-member-1-image-src', 'content_type' => 'image', 'content' => '{"src":"/images/team/1.png","alt":"Rubi Holloway - Beneficiary Lead"}'],
-        ['element_id' => 'team-member-1-image-alt', 'content_type' => 'text', 'content' => 'Rubi Holloway - Beneficiary Lead'],
-        ['element_id' => 'team-member-2-image-src', 'content_type' => 'image', 'content' => '{"src":"/images/team/2.jpg","alt":"Connie Menn - Beneficiary Manager"}'],
-        ['element_id' => 'team-member-2-image-alt', 'content_type' => 'text', 'content' => 'Connie Menn - Beneficiary Manager'],
-        ['element_id' => 'team-member-3-image-src', 'content_type' => 'image', 'content' => '{"src":"/images/team/3.jpg","alt":"Lena Sofia - Cultural Innovator"}'],
-        ['element_id' => 'team-member-3-image-alt', 'content_type' => 'text', 'content' => 'Lena Sofia - Cultural Innovator'],
-        ['element_id' => 'team-member-4-image-src', 'content_type' => 'image', 'content' => '{"src":"/images/team/4.jpg","alt":"Ella Marie - Innovation Nexus Lead"}'],
-        ['element_id' => 'team-member-4-image-alt', 'content_type' => 'text', 'content' => 'Ella Marie - Innovation Nexus Lead'],
+        ['element_id' => 'team-member-1-image', 'content_type' => 'image', 'content' => '{"src":"/images/team/1.png","alt":"Rubi Holloway - Beneficiary Lead"}'],
+        ['element_id' => 'team-member-2-image', 'content_type' => 'image', 'content' => '{"src":"/images/team/2.jpg","alt":"Connie Menn - Beneficiary Manager"}'],
+        ['element_id' => 'team-member-3-image', 'content_type' => 'image', 'content' => '{"src":"/images/team/3.jpg","alt":"Lena Sofia - Cultural Innovator"}'],
+        ['element_id' => 'team-member-4-image', 'content_type' => 'image', 'content' => '{"src":"/images/team/4.jpg","alt":"Ella Marie - Innovation Nexus Lead"}'],
         
         ['element_id' => 'showcase-image-1-src', 'content_type' => 'image', 'content' => '{"src":"images/media/partnership-2.png","alt":""}'],
         ['element_id' => 'showcase-image-1-alt', 'content_type' => 'text', 'content' => ''],

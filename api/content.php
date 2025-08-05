@@ -114,7 +114,7 @@ class ContentAPI {
         }
 
         // Sanitize content
-        $content = $this->sanitizeContent($content, $contentType);
+        $content = $this->sanitizeContent($content, $contentType, $elementId);
         
         // Special handling for hero video URL - extract video ID
         if ($elementId === 'hero-video-url' && $contentType === 'url') {
@@ -261,7 +261,7 @@ class ContentAPI {
         }
     }
 
-    private function sanitizeContent($content, $type) {
+    private function sanitizeContent($content, $type, $elementId = null) {
         $content = trim($content);
         
         switch ($type) {
@@ -272,25 +272,36 @@ class ContentAPI {
                 break;
 
             case 'url':
-                if (!filter_var($content, FILTER_VALIDATE_URL) && !empty($content)) {
-                    // Enhanced YouTube URL validation
-                    $youtubePatterns = [
-                        '/^(https?:\/\/)?(www\.)?youtube\.com\/watch\?v=[a-zA-Z0-9_-]{11}/', // youtube.com/watch?v=VIDEO_ID
-                        '/^(https?:\/\/)?(www\.)?youtu\.be\/[a-zA-Z0-9_-]{11}/', // youtu.be/VIDEO_ID
-                        '/^(https?:\/\/)?(www\.)?youtube\.com\/embed\/[a-zA-Z0-9_-]{11}/', // youtube.com/embed/VIDEO_ID
-                        '/^[a-zA-Z0-9_-]{11}$/' // Just video ID (11 characters)
-                    ];
-                    
-                    $isValidYouTube = false;
-                    foreach ($youtubePatterns as $pattern) {
-                        if (preg_match($pattern, $content)) {
-                            $isValidYouTube = true;
-                            break;
+                // Only apply YouTube validation to YouTube-related elements
+                if ($elementId && strpos($elementId, 'video') !== false) {
+                    if (!filter_var($content, FILTER_VALIDATE_URL) && !empty($content)) {
+                        // Enhanced YouTube URL validation for video elements
+                        $youtubePatterns = [
+                            '/^(https?:\/\/)?(www\.)?youtube\.com\/watch\?v=[a-zA-Z0-9_-]{11}/', // youtube.com/watch?v=VIDEO_ID
+                            '/^(https?:\/\/)?(www\.)?youtu\.be\/[a-zA-Z0-9_-]{11}/', // youtu.be/VIDEO_ID
+                            '/^(https?:\/\/)?(www\.)?youtube\.com\/embed\/[a-zA-Z0-9_-]{11}/', // youtube.com/embed/VIDEO_ID
+                            '/^[a-zA-Z0-9_-]{11}$/' // Just video ID (11 characters)
+                        ];
+                        
+                        $isValidYouTube = false;
+                        foreach ($youtubePatterns as $pattern) {
+                            if (preg_match($pattern, $content)) {
+                                $isValidYouTube = true;
+                                break;
+                            }
+                        }
+                        
+                        if (!$isValidYouTube) {
+                            $this->sendError('Invalid YouTube URL format. Please enter a valid YouTube URL or video ID.');
                         }
                     }
-                    
-                    if (!$isValidYouTube) {
-                        $this->sendError('Invalid YouTube URL format. Please enter a valid YouTube URL or video ID.');
+                } else {
+                    // For regular URLs, just check if it's a valid URL format
+                    if (!empty($content) && !filter_var($content, FILTER_VALIDATE_URL)) {
+                        // Allow relative URLs (starting with # or /)
+                        if (!preg_match('/^[#\/]|^https?:\/\//', $content)) {
+                            $this->sendError('Invalid URL format. Please enter a valid URL (e.g., https://example.com or #section).');
+                        }
                     }
                 }
                 break;

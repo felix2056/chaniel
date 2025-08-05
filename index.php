@@ -97,7 +97,7 @@ require_once 'content-loader.php';
 	<!-- Header End -->
 
     <!-- Hero Section Start -->
-    <div class="hero hero-video" id="home">
+    <div class="hero hero-video editable-element" id="home" data-editor-id="hero-video-url" data-editor-type="url">
         <!-- Video Start -->
         <div class="hero-bg-video">
             <!-- Youtube Video Start -->
@@ -242,7 +242,7 @@ require_once 'content-loader.php';
                         <div class="team-image">
                             <a href="#" data-cursor-text="View">
                                 <figure data-editor-id="team-member-1-image" data-editor-type="image">
-                                    <img src="<?php echo getContent('team-member-1-image-src', '/images/team/1.png'); ?>" alt="<?php echo getImageAlt('team-member-1-image-src', 'Rubi Holloway - Beneficiary Lead'); ?>">
+                                    <img src="<?php echo getContent('team-member-1-image', '/images/team/1.png'); ?>" alt="<?php echo getImageAlt('team-member-1-image', 'Rubi Holloway - Beneficiary Lead'); ?>">
                                 </figure>
                             </a>
                             
@@ -276,7 +276,7 @@ require_once 'content-loader.php';
                         <div class="team-image">
                             <a href="#" data-cursor-text="View">
                                 <figure data-editor-id="team-member-2-image" data-editor-type="image">
-                                    <img src="<?php echo getContent('team-member-2-image-src', '/images/team/2.jpg'); ?>" alt="<?php echo getImageAlt('team-member-2-image-src', 'Connie Menn - Beneficiary Manager'); ?>">
+                                    <img src="<?php echo getContent('team-member-2-image', '/images/team/2.jpg'); ?>" alt="<?php echo getImageAlt('team-member-2-image', 'Connie Menn - Beneficiary Manager'); ?>">
                                 </figure>
                             </a>
                             
@@ -310,7 +310,7 @@ require_once 'content-loader.php';
                         <div class="team-image">
                             <a href="#" data-cursor-text="View">
                                 <figure data-editor-id="team-member-3-image" data-editor-type="image">
-                                    <img src="<?php echo getContent('team-member-3-image-src', '/images/team/3.jpg'); ?>" alt="<?php echo getImageAlt('team-member-3-image-src', 'Lena Sofia - Cultural Innovator'); ?>">
+                                    <img src="<?php echo getContent('team-member-3-image', '/images/team/3.jpg'); ?>" alt="<?php echo getImageAlt('team-member-3-image', 'Lena Sofia - Cultural Innovator'); ?>">
                                 </figure>
                             </a>
                             
@@ -344,7 +344,7 @@ require_once 'content-loader.php';
                         <div class="team-image">
                             <a href="#" data-cursor-text="View">
                                 <figure data-editor-id="team-member-4-image" data-editor-type="image">
-                                    <img src="<?php echo getContent('team-member-4-image-src', '/images/team/4.jpg'); ?>" alt="<?php echo getImageAlt('team-member-4-image-src', 'Ella Marie - Innovation Nexus Lead'); ?>">
+                                    <img src="<?php echo getContent('team-member-4-image', '/images/team/4.jpg'); ?>" alt="<?php echo getImageAlt('team-member-4-image', 'Ella Marie - Innovation Nexus Lead'); ?>">
                                 </figure>
                             </a>
                             
