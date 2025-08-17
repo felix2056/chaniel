@@ -326,7 +326,7 @@
                         <div class="team-content">
                             <h3><a href="#"><span>Maria da Guia Lima Gomes Barros de Matos!</span></a></h3>
                             <p>Monthly income of $840,000 for 4 years</p>
-                            <div class="yield-indicator">Partnership Beneficiary - Lead</div>
+                            <div class="yield-indicator">Partnership Beneficiary</div>
                         </div>
                         <!-- Team Content End -->
                     </div>
