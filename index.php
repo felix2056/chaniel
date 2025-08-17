@@ -109,7 +109,7 @@
                         <!-- Section Title Start -->
                         <div class="section-title dark-section">
                             <h3 class="wow fadeInUp">luxury redefined</h3>
-                            <h1 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque"><span>Chris Anthony John Martin</span></h1>
+                            <h1 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque"><span>Damian Valentine</span></h1>
                             <p class="wow fadeInUp" data-wow-delay="0.4s">Where luxury meets innovation: CHANEL and Damian Valentines unite to redefine cultural boundaries, creating an unprecedented fusion of haute couture excellence and contemporary artistic vision that transcends traditional brand collaborations.</p>
                         </div>
                         <!-- Section Title End -->                        
@@ -161,7 +161,7 @@
                 <div class="col-lg-5">
                     <!-- Section Title Content Start -->
                     <div class="section-title-content">
-                        <p class="wow fadeInUp" data-wow-delay="0.4s">Through this strategic partnership, CHANEL and Christopher Anthony John Martin are launching exclusive collections, immersive digital experiences, and cultural initiatives that bridge the gap between haute couture excellence and contemporary pop culture. Their collaborative vision extends beyond fashion, encompassing art, technology, and social impact, setting new standards for brand collaborations in the luxury sector.</p>
+                        <p class="wow fadeInUp" data-wow-delay="0.4s">Through this strategic partnership, CHANEL and Damian Valentine are launching exclusive collections, immersive digital experiences, and cultural initiatives that bridge the gap between haute couture excellence and contemporary pop culture. Their collaborative vision extends beyond fashion, encompassing art, technology, and social impact, setting new standards for brand collaborations in the luxury sector.</p>
                     </div>
                     <!-- Section Tite Content End -->
                 </div>
