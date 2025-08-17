@@ -1,3 +1,7 @@
+<?php
+// Include content loader
+require_once 'content-loader.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +9,11 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-	<meta name="description" content="Experience the pinnacle of luxury and cultural innovation with CHANEL x Damian Valentine. Discover groundbreaking art, fashion, and technology initiatives shaping the future.">
-	<meta name="keywords" content="CHANEL, Damian Valentine, luxury fashion, cultural innovation, partnership, art, K-pop, brand collaboration, high fashion, investment yield, global reach, creative industry, digital renaissance, premium design, futuristic web">
-	<meta name="author" content="CHANEL x Damian Valentine">
+	<meta name="description" content="Experience the pinnacle of luxury and cultural innovation with CHANEL x LEE JUN HO. Discover groundbreaking art, fashion, and technology initiatives shaping the future.">
+	<meta name="keywords" content="CHANEL, Lee Jun Ho, luxury fashion, cultural innovation, partnership, art, K-pop, brand collaboration, high fashion, investment yield, global reach, creative industry, digital renaissance, premium design, futuristic web">
+	<meta name="author" content="CHANEL x LEE JUN HO">
 	<!-- Page Title -->
-    <title>CHANEL x Damian Valentine | Cultural Innovation Partnership - Elite Edition</title>
+    <title>CHANEL x LEE JUN HO | Cultural Innovation Partnership - Elite Edition</title>
 	<!-- Favicon Icon -->
 	<link rel="shortcut icon" type="image/x-icon" href="/images/logo/favicon.png">
 	<!-- Google Fonts Css-->
@@ -41,8 +45,8 @@
 	<div class="preloader">
 		<div class="loading-container">
 			<div class="loading"></div>
-			<div id="loading-icon">
-                <img src="/images/logo/logo-chanel.png" alt="CHANEL x Damian Valentine">
+			            <div id="loading-icon">
+                <img src="<?php echo getContent('logo-loading', '/images/logo/logo-chanel.png'); ?>" alt="<?php echo getImageAlt('logo-loading', 'CHANEL x LEE JUN HO'); ?>" data-editor-id="logo-loading" data-editor-type="image">
             </div>
 		</div>
 	</div>
@@ -55,7 +59,7 @@
 				<div class="container">
 					<!-- Logo Start -->
 					<a class="navbar-brand" href="/">
-                        <img src="/images/logo/logo-chanel.png" alt="CHANEL x Damian Valentine" class="logo">
+                        <img src="<?php echo getContent('logo-navbar', '/images/logo/logo-chanel.png'); ?>" alt="<?php echo getImageAlt('logo-navbar', 'CHANEL x LEE JUN HO'); ?>" class="logo" data-editor-id="logo-navbar" data-editor-type="image">
 					</a>
 					<!-- Logo End -->
 
@@ -93,11 +97,11 @@
 	<!-- Header End -->
 
     <!-- Hero Section Start -->
-    <div class="hero hero-video" id="home">
+    <div class="hero hero-video editable-element" id="home" data-editor-id="hero-video-url" data-editor-type="url">
         <!-- Video Start -->
         <div class="hero-bg-video">
             <!-- Youtube Video Start -->
-            <div id="herovideo" class="player" data-property="{videoURL:'Twcj7uXM4mM',containment:'.hero-video', showControls:false, autoPlay:true, loop:true, vol:0, mute:false, startAt:0,  stopAt:296, opacity:1, addRaster:true, quality:'large', optimizeDisplay:true}"></div>
+            <div id="herovideo" class="player" data-property="{videoURL:'<?php echo getYouTubeVideoId('hero-video-url', 'oo74I-aNlUw'); ?>',containment:'.hero-video', showControls:false, autoPlay:true, loop:true, vol:0, mute:false, startAt:0,  stopAt:296, opacity:1, addRaster:true, quality:'large', optimizeDisplay:true}"></div>
             <!-- Youtube Video End -->
         </div>
         <!-- Video End -->
@@ -108,9 +112,9 @@
                     <div class="hero-content">
                         <!-- Section Title Start -->
                         <div class="section-title dark-section">
-                            <h3 class="wow fadeInUp">luxury redefined</h3>
-                            <h1 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque"><span>Chris Anthony John Martin</span></h1>
-                            <p class="wow fadeInUp" data-wow-delay="0.4s">Where luxury meets innovation: CHANEL and Damian Valentines unite to redefine cultural boundaries, creating an unprecedented fusion of haute couture excellence and contemporary artistic vision that transcends traditional brand collaborations.</p>
+                            <h3 class="wow fadeInUp" data-editor-id="hero-subtitle" data-editor-type="text"><?php echo getContent('hero-subtitle', 'luxury redefined'); ?></h3>
+                            <h1 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque" data-editor-id="hero-title" data-editor-type="text"><span><?php echo getContent('hero-title', 'CHANEL X LEE JUN HO'); ?></span></h1>
+                            <p class="wow fadeInUp" data-wow-delay="0.4s" data-editor-id="hero-description" data-editor-type="text"><?php echo getContent('hero-description', 'Where luxury meets innovation: CHANEL and Lee Jun Ho unite to redefine cultural boundaries, creating an unprecedented fusion of haute couture excellence and contemporary artistic vision that transcends traditional brand collaborations.'); ?></p>
                         </div>
                         <!-- Section Title End -->                        
 
@@ -118,8 +122,8 @@
                         <div class="hero-body wow fadeInUp" data-wow-delay="0.6s">
                             <!-- Hero Button Start -->
                             <div class="hero-btn">
-                                <a href="#vision" class="btn-default btn-highlighted">Discover More</a>
-                                <a href="#contact" class="btn-default">Contact Us</a>
+                                <a href="<?php echo getContent('hero-btn-primary-link', '#vision'); ?>" class="btn-default btn-highlighted" data-editor-id="hero-btn-primary-link" data-editor-type="url"><?php echo getContent('hero-btn-primary', 'Discover More'); ?></a>
+                                <a href="<?php echo getContent('hero-btn-secondary-link', '#contact'); ?>" class="btn-default" data-editor-id="hero-btn-secondary-link" data-editor-type="url"><?php echo getContent('hero-btn-secondary', 'Contact Us'); ?></a>
                             </div>
                             <!-- Hero Button End -->
                         </div>
@@ -144,14 +148,14 @@
                     <div class="section-title-content-btn">
                         <!-- Section Tite Start -->
                         <div class="section-title">
-                            <h3 class="wow fadeInUp">the collaboration</h3>
-                            <h2 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque">CHANEL x Damian Valentine Partnership</h2>
+                            <h3 class="wow fadeInUp" data-editor-id="about-subtitle" data-editor-type="text"><?php echo getContent('about-subtitle', 'the collaboration'); ?></h3>
+                            <h2 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque" data-editor-id="about-title" data-editor-type="text"><?php echo getContent('about-title', 'CHANEL x LEE JUN HO Partnership'); ?></h2>
                         </div>
                         <!-- Section Tite End -->
 
                         <!-- Section Button Start -->
                         <div class="section-btn wow fadeInUp" data-wow-delay="0.4s">
-                            <a href="#gallery" class="btn-default">explore collection</a>
+                            <a href="<?php echo getContent('about-btn-link', '#gallery'); ?>" class="btn-default" data-editor-id="about-btn-link" data-editor-type="url"><span data-editor-id="about-btn" data-editor-type="text"><?php echo getContent('about-btn', 'explore collection'); ?></span></a>
                         </div>
                         <!-- Section Button End -->
                     </div>
@@ -161,7 +165,7 @@
                 <div class="col-lg-5">
                     <!-- Section Title Content Start -->
                     <div class="section-title-content">
-                        <p class="wow fadeInUp" data-wow-delay="0.4s">Through this strategic partnership, CHANEL and Christopher Anthony John Martin are launching exclusive collections, immersive digital experiences, and cultural initiatives that bridge the gap between haute couture excellence and contemporary pop culture. Their collaborative vision extends beyond fashion, encompassing art, technology, and social impact, setting new standards for brand collaborations in the luxury sector.</p>
+                        <p class="wow fadeInUp" data-wow-delay="0.4s" data-editor-id="about-description" data-editor-type="text"><?php echo getContent('about-description', 'Through this strategic partnership, CHANEL and Lee Jun Ho are launching exclusive collections, immersive digital experiences, and cultural initiatives that bridge the gap between haute couture excellence and contemporary pop culture. Their collaborative vision extends beyond fashion, encompassing art, technology, and social impact, setting new standards for brand collaborations in the luxury sector.'); ?></p>
                     </div>
                     <!-- Section Tite Content End -->
                 </div>
@@ -171,8 +175,8 @@
                 <div class="col-lg-12">
                     <!-- About Us Image Start -->
                     <div class="about-us-image">
-                        <figure class="image-anime reveal">
-                            <img src="https://iamdvalentine.com/public/images/common/banner.jpg" alt="CHANEL x Damian Valentine Collaboration">
+                        <figure class="image-anime reveal" data-editor-id="about-image" data-editor-type="image">
+                            <img src="<?php echo getContent('about-image-src', '/images/media/about.png'); ?>" alt="<?php echo getImageAlt('about-image-src', 'CHANEL x LEE JUN HO Partnership'); ?>">
                         </figure>
                     </div>
                     <!-- About Us Image End -->
@@ -183,29 +187,29 @@
                     <div class="about-counter-box">
                         <!-- About Counter Item Start -->
                         <div class="about-counter-item">
-                           <h2><span class="counter">50</span>M+</h2>
-                           <h3>Social Media Reach</h3>
+                           <h2><span class="counter" data-editor-id="counter-1-value" data-editor-type="number"><?php echo getContent('counter-1-value', '50'); ?></span>M+</h2>
+                           <h3 data-editor-id="counter-1-label" data-editor-type="text"><?php echo getContent('counter-1-label', 'Social Media Reach'); ?></h3>
                         </div>
                         <!-- About Counter Item End -->
                         
                         <!-- About Counter Item Start -->
                         <div class="about-counter-item">
-                            <h2>$<span class="counter">25</span>M</h2>
-                            <h3>Partnership Value</h3>
+                            <h2>$<span class="counter" data-editor-id="counter-2-value" data-editor-type="number"><?php echo getContent('counter-2-value', '25'); ?></span>M</h2>
+                            <h3 data-editor-id="counter-2-label" data-editor-type="text"><?php echo getContent('counter-2-label', 'Partnership Value'); ?></h3>
                         </div>
                         <!-- About Counter Item End -->
 
                         <!-- About Counter Item Start -->
                         <div class="about-counter-item">
-                            <h2><span class="counter">8</span></h2>
-                            <h3>Exclusive Collections</h3>
+                            <h2><span class="counter" data-editor-id="counter-3-value" data-editor-type="number"><?php echo getContent('counter-3-value', '8'); ?></span></h2>
+                            <h3 data-editor-id="counter-3-label" data-editor-type="text"><?php echo getContent('counter-3-label', 'Exclusive Collections'); ?></h3>
                         </div>
                         <!-- About Counter Item End -->
                          
                         <!-- About Counter Item Start -->
                         <div class="about-counter-item">
-                            <h2><span class="counter">15</span></h2>
-                            <h3>Global Campaigns</h3>
+                            <h2><span class="counter" data-editor-id="counter-4-value" data-editor-type="number"><?php echo getContent('counter-4-value', '15'); ?></span></h2>
+                            <h3 data-editor-id="counter-4-label" data-editor-type="text"><?php echo getContent('counter-4-label', 'Global Campaigns'); ?></h3>
                         </div>
                         <!-- About Counter Item End -->
                     </div>
@@ -223,8 +227,8 @@
                 <div class="col-lg-12">
                     <!-- Section Title Start -->
                     <div class="section-title section-title-center">
-                        <h3 class="wow fadeInUp">partnership team</h3>
-                        <h2 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque">CHANEL x Damian Valentine Collaboration</h2>
+                        <h3 class="wow fadeInUp" data-editor-id="team-subtitle" data-editor-type="text"><?php echo getContent('team-subtitle', 'partnership team'); ?></h3>
+                        <h2 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque" data-editor-id="team-title" data-editor-type="text"><?php echo getContent('team-title', 'CHANEL x LEE JUN HO Collaboration'); ?></h2>
                     </div>
                     <!-- Section Title End -->
                 </div>
@@ -237,17 +241,17 @@
                         <!-- Team Image Start -->
                         <div class="team-image">
                             <a href="#" data-cursor-text="View">
-                                <figure>
-                                    <img src="/images/team/sharon.jpeg" alt="Sharon Wilson - Lead Beneficiary">
+                                <figure data-editor-id="team-member-1-image" data-editor-type="image">
+                                    <img src="<?php echo getContent('team-member-1-image', '/images/team/1.png'); ?>" alt="<?php echo getImageAlt('team-member-1-image', 'Rubi Holloway - Beneficiary Lead'); ?>">
                                 </figure>
                             </a>
                             
                             <!-- Team Social Icon Start -->
                             <div class="team-social-icon">
                                 <ul>
-                                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                                    <li><a href="<?php echo getContent('team-member-1-instagram', '#'); ?>" data-editor-id="team-member-1-instagram" data-editor-type="url"><i class="fa-brands fa-instagram"></i></a></li>
+                                    <li><a href="<?php echo getContent('team-member-1-facebook', '#'); ?>" data-editor-id="team-member-1-facebook" data-editor-type="url"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="<?php echo getContent('team-member-1-linkedin', '#'); ?>" data-editor-id="team-member-1-linkedin" data-editor-type="url"><i class="fa-brands fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
                             <!-- Team Social Icon End -->
@@ -256,9 +260,9 @@
 
                         <!-- Team Content Start -->
                         <div class="team-content">
-                            <h3><a href="#"><span>Sharon Wilson</span></a></h3>
-                            <p>Annual income of $1,9000,000</p>
-                            <div class="yield-indicator"> Lead Beneficiary</div>
+                            <h3><a href="<?php echo getContent('team-member-1-profile', '#'); ?>" data-editor-id="team-member-1-profile" data-editor-type="url"><span data-editor-id="team-member-1-name" data-editor-type="text"><?php echo getContent('team-member-1-name', 'Rubi Holloway'); ?></span></a></h3>
+                            <p data-editor-id="team-member-1-role" data-editor-type="text"><?php echo getContent('team-member-1-role', 'CHANEL Creative Director'); ?></p>
+                            <div class="yield-indicator" data-editor-id="team-member-1-indicator" data-editor-type="text"><?php echo getContent('team-member-1-indicator', 'Partnership Strategy Lead'); ?></div>
                         </div>
                         <!-- Team Content End -->
                     </div>
@@ -271,17 +275,17 @@
                         <!-- Team Image Start -->
                         <div class="team-image">
                             <a href="#" data-cursor-text="View">
-                                <figure>
-                                    <img src="/images/team/2.jpg" alt="Connie Menn - Contract Manager">
+                                <figure data-editor-id="team-member-2-image" data-editor-type="image">
+                                    <img src="<?php echo getContent('team-member-2-image', '/images/team/2.jpg'); ?>" alt="<?php echo getImageAlt('team-member-2-image', 'Connie Menn - Beneficiary Manager'); ?>">
                                 </figure>
                             </a>
                             
                             <!-- Team Social Icon Start -->
                             <div class="team-social-icon">
                                 <ul>
-                                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                                    <li><a href="<?php echo getContent('team-member-2-instagram', '#'); ?>" data-editor-id="team-member-2-instagram" data-editor-type="url"><i class="fa-brands fa-instagram"></i></a></li>
+                                    <li><a href="<?php echo getContent('team-member-2-facebook', '#'); ?>" data-editor-id="team-member-2-facebook" data-editor-type="url"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="<?php echo getContent('team-member-2-linkedin', '#'); ?>" data-editor-id="team-member-2-linkedin" data-editor-type="url"><i class="fa-brands fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
                             <!-- Team Social Icon End -->
@@ -290,9 +294,9 @@
 
                         <!-- Team Content Start -->
                         <div class="team-content">
-                            <h3><a href="#"><span>Connie Menn</span></a></h3>
-                            <p>Annual income of $5,350,000</p>
-                            <div class="yield-indicator">Contract Manager</div>
+                            <h3><a href="<?php echo getContent('team-member-2-profile', '#'); ?>" data-editor-id="team-member-2-profile" data-editor-type="url"><span data-editor-id="team-member-2-name" data-editor-type="text"><?php echo getContent('team-member-2-name', 'Connie Menn'); ?></span></a></h3>
+                            <p data-editor-id="team-member-2-role" data-editor-type="text"><?php echo getContent('team-member-2-role', 'Lee Jun Ho\'s Manager'); ?></p>
+                            <div class="yield-indicator" data-editor-id="team-member-2-indicator" data-editor-type="text"><?php echo getContent('team-member-2-indicator', 'Global Brand Ambassador'); ?></div>
                         </div>
                         <!-- Team Content End -->
                     </div>
@@ -305,17 +309,17 @@
                         <!-- Team Image Start -->
                         <div class="team-image">
                             <a href="#" data-cursor-text="View">
-                                <figure>
-                                    <img src="/images/team/maria.jpeg" alt="Maria da Guia Lima Gomes Barros de Matos! - Cultural Innovator">
+                                <figure data-editor-id="team-member-3-image" data-editor-type="image">
+                                    <img src="<?php echo getContent('team-member-3-image', '/images/team/3.jpg'); ?>" alt="<?php echo getImageAlt('team-member-3-image', 'Lena Sofia - Cultural Innovator'); ?>">
                                 </figure>
                             </a>
                             
                             <!-- Team Social Icon Start -->
                             <div class="team-social-icon">
                                 <ul>
-                                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                                    <li><a href="<?php echo getContent('team-member-3-instagram', '#'); ?>" data-editor-id="team-member-3-instagram" data-editor-type="url"><i class="fa-brands fa-instagram"></i></a></li>
+                                    <li><a href="<?php echo getContent('team-member-3-facebook', '#'); ?>" data-editor-id="team-member-3-facebook" data-editor-type="url"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="<?php echo getContent('team-member-3-linkedin', '#'); ?>" data-editor-id="team-member-3-linkedin" data-editor-type="url"><i class="fa-brands fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
                             <!-- Team Social Icon End -->
@@ -324,9 +328,9 @@
 
                         <!-- Team Content Start -->
                         <div class="team-content">
-                            <h3><a href="#"><span>Maria da Guia Lima Gomes Barros de Matos!</span></a></h3>
-                            <p>Monthly income of $840,000 for 4 years</p>
-                            <div class="yield-indicator">Partnership Beneficiary - Lead</div>
+                            <h3><a href="<?php echo getContent('team-member-3-profile', '#'); ?>" data-editor-id="team-member-3-profile" data-editor-type="url"><span data-editor-id="team-member-3-name" data-editor-type="text"><?php echo getContent('team-member-3-name', 'Lena Sofia'); ?></span></a></h3>
+                            <p data-editor-id="team-member-3-role" data-editor-type="text"><?php echo getContent('team-member-3-role', 'Partnership Coordinator'); ?></p>
+                            <div class="yield-indicator" data-editor-id="team-member-3-indicator" data-editor-type="text"><?php echo getContent('team-member-3-indicator', 'Campaign Development'); ?></div>
                         </div>
                         <!-- Team Content End -->
                     </div>
@@ -339,17 +343,17 @@
                         <!-- Team Image Start -->
                         <div class="team-image">
                             <a href="#" data-cursor-text="View">
-                                <figure>
-                                    <img src="/images/team/4.jpg" alt="Ella Marie - Innovation Nexus Lead">
+                                <figure data-editor-id="team-member-4-image" data-editor-type="image">
+                                    <img src="<?php echo getContent('team-member-4-image', '/images/team/4.jpg'); ?>" alt="<?php echo getImageAlt('team-member-4-image', 'Ella Marie - Innovation Nexus Lead'); ?>">
                                 </figure>
                             </a>
                             
                             <!-- Team Social Icon Start -->
                             <div class="team-social-icon">
                                 <ul>
-                                    <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-                                    <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
+                                    <li><a href="<?php echo getContent('team-member-4-instagram', '#'); ?>" data-editor-id="team-member-4-instagram" data-editor-type="url"><i class="fa-brands fa-instagram"></i></a></li>
+                                    <li><a href="<?php echo getContent('team-member-4-facebook', '#'); ?>" data-editor-id="team-member-4-facebook" data-editor-type="url"><i class="fab fa-facebook-f"></i></a></li>
+                                    <li><a href="<?php echo getContent('team-member-4-linkedin', '#'); ?>" data-editor-id="team-member-4-linkedin" data-editor-type="url"><i class="fa-brands fa-linkedin"></i></a></li>
                                 </ul>
                             </div>
                             <!-- Team Social Icon End -->
@@ -358,9 +362,9 @@
 
                         <!-- Team Content Start -->
                         <div class="team-content">
-                            <h3><a href="#"><span>Ella Marie</span></a></h3>
-                            <p>Digital Innovation Lead</p>
-                            <div class="yield-indicator">Technology Integration</div>
+                            <h3><a href="<?php echo getContent('team-member-4-profile', '#'); ?>" data-editor-id="team-member-4-profile" data-editor-type="url"><span data-editor-id="team-member-4-name" data-editor-type="text"><?php echo getContent('team-member-4-name', 'Ella Marie'); ?></span></a></h3>
+                            <p data-editor-id="team-member-4-role" data-editor-type="text"><?php echo getContent('team-member-4-role', 'Digital Innovation Lead'); ?></p>
+                            <div class="yield-indicator" data-editor-id="team-member-4-indicator" data-editor-type="text"><?php echo getContent('team-member-4-indicator', 'Technology Integration'); ?></div>
                         </div>
                         <!-- Team Content End -->
                     </div>
@@ -370,7 +374,7 @@
                 <div class="col-lg-12">
                     <!-- Section Footer Button Start -->
                     <div class="section-footer-btn wow fadeInUp" data-wow-delay="0.8s">
-                        <a href="#gallery" class="btn-default">explore partnership</a>
+                                                    <a href="<?php echo getContent('team-btn-link', '#gallery'); ?>" class="btn-default" data-editor-id="team-btn-link" data-editor-type="url"><span data-editor-id="team-btn" data-editor-type="text"><?php echo getContent('team-btn', 'explore partnership'); ?></span></a>
                     </div>
                     <!-- Section Footer Button End -->
                 </div>
@@ -386,8 +390,8 @@
                 <div class="col-lg-12">
                     <!-- Section Title Start -->
                     <div class="section-title section-title-center">
-                        <h3 class="wow fadeInUp">partnership showcase</h3>
-                        <h2 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque">Witness the fusion of luxury & innovation</h2>
+                        <h3 class="wow fadeInUp" data-editor-id="showcase-subtitle" data-editor-type="text"><?php echo getContent('showcase-subtitle', 'partnership showcase'); ?></h3>
+                        <h2 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque" data-editor-id="showcase-title" data-editor-type="text"><?php echo getContent('showcase-title', 'Witness the fusion of luxury & innovation'); ?></h2>
                     </div>
                     <!-- Section Title End -->
                 </div>
@@ -398,15 +402,15 @@
                     <!-- Partnership Showcase Box Start -->
                     <div class="intro-video-box">
                         <div class="intro-bg-image">
-                            <a href="https://www.youtube.com/watch?v=Twcj7uXM4mM" class="popup-video" data-cursor-text="Watch">
-                                <figure>
-                                    <img src="https://lh7-rt.googleusercontent.com/docsz/AD_4nXeTiE0GxY945dalmoo6WUqALUIdTkAX8A-Y-6CT6GzvDymXVEo76IbIyOqQgOainYcscwWMx3TzwmyjN2JtczGXT2b2rrqJOEIn8_kAGolQazrLXcoyZqDgBO90ENSwwBgK9U3H?key=rH2amp8iWessr3ZmEhwgPg" alt="">
+                            <a href="<?php echo getContent('showcase-video-url', 'https://www.youtube.com/watch?v=fVsbt8c4HWo'); ?>" class="popup-video" data-cursor-text="Watch" data-editor-id="showcase-video-url" data-editor-type="url">
+                                <figure data-editor-id="showcase-image-1" data-editor-type="image">
+                                    <img src="<?php echo getContent('showcase-image-1-src', 'images/media/partnership-2.png'); ?>" alt="<?php echo getImageAlt('showcase-image-1-src', ''); ?>">
                                 </figure>
                             </a>                            
                         </div>
                         <!-- Video Play Button Start -->
                         <div class="video-play-button">
-                            <a href="https://www.youtube.com/watch?v=Twcj7uXM4mM" class="popup-video" data-cursor-text="Watch">
+                            <a href="<?php echo getContent('showcase-video-url', 'https://www.youtube.com/watch?v=fVsbt8c4HWo'); ?>" class="popup-video" data-cursor-text="Watch" data-editor-id="showcase-video-url" data-editor-type="url">
                                 <i class="fa-solid fa-play"></i>
                             </a>
                         </div>
@@ -426,8 +430,8 @@
                 <div class="col-lg-12">
                     <!-- Section Title Start -->
                     <div class="section-title section-title-center">
-                        <h3 class="wow fadeInUp">partnership gallery</h3>
-                        <h2 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque">A visual symphony of our collaboration</h2>
+                        <h3 class="wow fadeInUp" data-editor-id="gallery-subtitle" data-editor-type="text"><?php echo getContent('gallery-subtitle', 'partnership gallery'); ?></h3>
+                        <h2 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque" data-editor-id="gallery-title" data-editor-type="text"><?php echo getContent('gallery-title', 'A visual symphony of our collaboration'); ?></h2>
                     </div>
                     <!-- Section Title End -->
                 </div>
@@ -439,8 +443,8 @@
                     <!-- image gallery start -->
                     <div class="photo-gallery wow fadeInUp">
                         <a href="images/collections/bleu-de-chanel-eau-de-toilette-spray-3-4fl-oz--packshot-default-107460-9564920184862.avif" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="/images/collections/bleu-de-chanel-eau-de-toilette-spray-3-4fl-oz--packshot-default-107460-9564920184862.avif" alt="CHANEL x Damian Valentine Exclusive Collection">
+                            <figure class="image-anime" data-editor-id="collection-image-1" data-editor-type="image">
+                                <img src="<?php echo getContent('collection-image-1-src', 'images/collections/bleu-de-chanel-eau-de-toilette-spray-3-4fl-oz--packshot-default-107460-9564920184862.avif'); ?>" alt="<?php echo getImageAlt('collection-image-1-src', 'CHANEL x LEE JUN HO Exclusive Collection'); ?>">
                             </figure>
                         </a>
                     </div>
@@ -451,8 +455,8 @@
                     <!-- image gallery start -->
                     <div class="photo-gallery wow fadeInUp" data-wow-delay="0.2s">
                         <a href="images/collections/1690923071641-10204538568734jpeg_600x600.webp" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="/images/collections/1690923071641-10204538568734jpeg_600x600.webp" alt="CHANEL x Damian Valentine Luxury Collection">
+                            <figure class="image-anime" data-editor-id="collection-image-2" data-editor-type="image">
+                                <img src="<?php echo getContent('collection-image-2-src', 'images/collections/1690923071641-10204538568734jpeg_600x600.webp'); ?>" alt="<?php echo getImageAlt('collection-image-2-src', 'CHANEL x LEE JUN HO Luxury Collection'); ?>">
                             </figure>
                         </a>
                     </div>
@@ -463,8 +467,8 @@
                     <!-- image gallery start -->
                     <div class="photo-gallery wow fadeInUp" data-wow-delay="0.4s">
                         <a href="images/collections/1690923149624-10196617134110jpeg_600x600.webp" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="/images/collections/1690923149624-10196617134110jpeg_600x600.webp" alt="CHANEL x Damian Valentine Premium Collection">
+                            <figure class="image-anime" data-editor-id="collection-image-3" data-editor-type="image">
+                                <img src="<?php echo getContent('collection-image-3-src', 'images/collections/1690923149624-10196617134110jpeg_600x600.webp'); ?>" alt="<?php echo getImageAlt('collection-image-3-src', 'CHANEL x LEE JUN HO Premium Collection'); ?>">
                             </figure>
                         </a>
                     </div>
@@ -475,8 +479,8 @@
                     <!-- image gallery start -->
                     <div class="photo-gallery wow fadeInUp" data-wow-delay="0.6s">
                         <a href="images/collections/1690923306843-10198472359966jpeg_600x600.webp" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="/images/collections/1690923306843-10198472359966jpeg_600x600.webp" alt="CHANEL x Damian Valentine Signature Collection">
+                            <figure class="image-anime" data-editor-id="collection-image-4" data-editor-type="image">
+                                <img src="<?php echo getContent('collection-image-4-src', 'images/collections/1690923306843-10198472359966jpeg_600x600.webp'); ?>" alt="<?php echo getImageAlt('collection-image-4-src', 'CHANEL x LEE JUN HO Signature Collection'); ?>">
                             </figure>
                         </a>
                     </div>
@@ -487,8 +491,8 @@
                     <!-- image gallery start -->
                     <div class="photo-gallery wow fadeInUp" data-wow-delay="0.8s">
                         <a href="images/collections/bleu-de-chanel-eau-de-toilette-spray-3-4fl-oz--packshot-default-107460-9564920184862.avif" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="/images/collections/bleu-de-chanel-eau-de-toilette-spray-3-4fl-oz--packshot-default-107460-9564920184862.avif" alt="CHANEL x Damian Valentine Global Collection">
+                            <figure class="image-anime" data-editor-id="collection-image-5" data-editor-type="image">
+                                <img src="<?php echo getContent('collection-image-5-src', 'images/collections/bleu-de-chanel-eau-de-toilette-spray-3-4fl-oz--packshot-default-107460-9564920184862.avif'); ?>" alt="<?php echo getImageAlt('collection-image-5-src', 'CHANEL x LEE JUN HO Global Collection'); ?>">
                             </figure>
                         </a>
                     </div>
@@ -499,8 +503,8 @@
                     <!-- image gallery start -->
                     <div class="photo-gallery wow fadeInUp" data-wow-delay="1s">
                         <a href="images/collections/1690923071641-10204538568734jpeg_600x600.webp" data-cursor-text="View">
-                            <figure class="image-anime">
-                                <img src="/images/collections/1690923071641-10204538568734jpeg_600x600.webp" alt="CHANEL x Damian Valentine Innovation Collection">
+                            <figure class="image-anime" data-editor-id="collection-image-6" data-editor-type="image">
+                                <img src="<?php echo getContent('collection-image-6-src', 'images/collections/1690923071641-10204538568734jpeg_600x600.webp'); ?>" alt="<?php echo getImageAlt('collection-image-6-src', 'CHANEL x LEE JUN HO Innovation Collection'); ?>">
                             </figure>
                         </a>
                     </div>
@@ -519,8 +523,8 @@
                 <div class="col-lg-12">
                     <!-- Section Title Start -->
                     <div class="section-title section-title-center">
-                        <h3 class="wow fadeInUp">industry insights</h3>
-                        <h2 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque">Voices from the luxury frontier</h2>
+                        <h3 class="wow fadeInUp" data-editor-id="testimonials-subtitle" data-editor-type="text"><?php echo getContent('testimonials-subtitle', 'industry insights'); ?></h3>
+                        <h2 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque" data-editor-id="testimonials-title" data-editor-type="text"><?php echo getContent('testimonials-title', 'Voices from the luxury frontier'); ?></h2>
                     </div>
                     <!-- Section Title End -->
                 </div>
@@ -539,16 +543,16 @@
                                             <img src="fonts/testimonial-quote.svg" alt>
                                         </div>
                                         <div class="testimonial-content">
-                                            <p>The CHANEL x Damian Valentine promotional collaboration represents a revolutionary breakthrough in luxury brand partnerships. Their innovative approach to merging haute couture with contemporary pop culture has set unprecedented standards for the industry. This strategic alliance has created a cultural phenomenon that transcends traditional celebrity endorsements.</p>
+                                            <p data-editor-id="testimonial-1-content" data-editor-type="text"><?php echo getContent('testimonial-1-content', 'The CHANEL x LEE JUN HO promotional collaboration represents a revolutionary breakthrough in luxury brand partnerships. Their innovative approach to merging haute couture with contemporary pop culture has set unprecedented standards for the industry. This strategic alliance has created a cultural phenomenon that transcends traditional celebrity endorsements.'); ?></p>
                                         </div>
                                         <div class="author-info">
                                             <div class="author-image">
-                                                <figure class="image-anime">
-                                                    <img src="/images/author-1.jpg" alt="Marco Bizzarri">
+                                                <figure class="image-anime" data-editor-id="testimonial-author-1" data-editor-type="image">
+                                                    <img src="<?php echo getContent('testimonial-author-1-src', 'images/author-1.jpg'); ?>" alt="<?php echo getImageAlt('testimonial-author-1-src', 'Marco Bizzarri'); ?>">
                                                 </figure>
                                              </div>            
                                             <div class="author-content">
-                                                <h3>Marco Bizzarri / Luxury Industry Expert</h3>
+                                                <h3 data-editor-id="testimonial-1-author" data-editor-type="text"><?php echo getContent('testimonial-1-author', 'Marco Bizzarri / Luxury Industry Expert'); ?></h3>
                                             </div>
                                         </div>
                                     </div>
@@ -562,16 +566,16 @@
                                             <img src="fonts/testimonial-quote.svg" alt>
                                         </div>
                                         <div class="testimonial-content">
-                                            <p>This promotional collaboration transcends traditional boundaries between luxury fashion and global entertainment. The way CHANEL and Damian Valentine have integrated cultural innovation with premium branding creates an entirely new ecosystem for strategic partnerships. It's a masterclass in modern luxury brand collaboration that redefines industry standards.</p>
+                                            <p data-editor-id="testimonial-2-content" data-editor-type="text"><?php echo getContent('testimonial-2-content', 'This promotional collaboration transcends traditional boundaries between luxury fashion and global entertainment. The way CHANEL and Lee Jun Ho have integrated cultural innovation with premium branding creates an entirely new ecosystem for strategic partnerships. It\'s a masterclass in modern luxury brand collaboration that redefines industry standards.'); ?></p>
                                         </div>
                                         <div class="author-info">
                                             <div class="author-image">
-                                                <figure class="image-anime">
-                                                    <img src="/images/author-2.jpg" alt="Dr. Elena Rodriguez">
+                                                <figure class="image-anime" data-editor-id="testimonial-author-2" data-editor-type="image">
+                                                    <img src="<?php echo getContent('testimonial-author-2-src', 'images/author-2.jpg'); ?>" alt="<?php echo getImageAlt('testimonial-author-2-src', 'Dr. Elena Rodriguez'); ?>">
                                                 </figure>
                                             </div>            
                                             <div class="author-content">
-                                                <h3>Dr. Elena Rodriguez / Cultural Innovation Director</h3>
+                                                <h3 data-editor-id="testimonial-2-author" data-editor-type="text"><?php echo getContent('testimonial-2-author', 'Dr. Elena Rodriguez / Cultural Innovation Director'); ?></h3>
                                             </div>
                                         </div>                                    
                                     </div>
@@ -585,16 +589,16 @@
                                             <img src="fonts/testimonial-quote.svg" alt>
                                         </div>
                                         <div class="testimonial-content">
-                                            <p>The digital renaissance CHANEL and Damian Valentine are spearheading through this promotional collaboration is remarkable. Their approach to blending haute couture with cutting-edge technology while maintaining cultural authenticity and luxury standards is exactly what the industry needs to evolve and thrive in the digital age.</p>
+                                            <p data-editor-id="testimonial-3-content" data-editor-type="text"><?php echo getContent('testimonial-3-content', 'The digital renaissance CHANEL and Lee Jun Ho are spearheading through this promotional collaboration is remarkable. Their approach to blending haute couture with cutting-edge technology while maintaining cultural authenticity and luxury standards is exactly what the industry needs to evolve and thrive in the digital age.'); ?></p>
                                         </div>
                                         <div class="author-info">
                                             <div class="author-image">
-                                                <figure class="image-anime">
-                                                    <img src="/images/author-2.jpg" alt="Alexander Kim">
+                                                <figure class="image-anime" data-editor-id="testimonial-author-3" data-editor-type="image">
+                                                    <img src="<?php echo getContent('testimonial-author-3-src', 'images/author-2.jpg'); ?>" alt="<?php echo getImageAlt('testimonial-author-3-src', 'Alexander Kim'); ?>">
                                                 </figure>
                                             </div>            
                                             <div class="author-content">
-                                                <h3>Alexander Kim / Digital Innovation Strategist</h3>
+                                                <h3 data-editor-id="testimonial-3-author" data-editor-type="text"><?php echo getContent('testimonial-3-author', 'Alexander Kim / Digital Innovation Strategist'); ?></h3>
                                             </div>
                                         </div>                                    
                                     </div>
@@ -618,8 +622,8 @@
                 <div class="col-lg-12">
                     <!-- Section Title Start -->
                     <div class="section-title section-title-center">
-                        <h3 class="wow fadeInUp">latest insights</h3>
-                        <h2 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque">Stay updated with our latest innovations</h2>
+                        <h3 class="wow fadeInUp" data-editor-id="blog-subtitle" data-editor-type="text"><?php echo getContent('blog-subtitle', 'latest insights'); ?></h3>
+                        <h2 class="wow fadeInUp" data-wow-delay="0.2s" data-cursor="-opaque" data-editor-id="blog-title" data-editor-type="text"><?php echo getContent('blog-title', 'Stay updated with our latest innovations'); ?></h2>
                     </div>
                     <!-- Section Title End -->
                 </div>
@@ -632,8 +636,8 @@
                         <!-- Post Featured Image Start-->
                         <div class="post-featured-image">
                             <a href="blog-single.html" data-cursor-text="View">
-                                <figure class="image-anime">
-                                        <img src="/images/post-1.jpg" alt="CHANEL x Damian Valentine Fashion Week">
+                                <figure class="image-anime" data-editor-id="blog-post-1-image" data-editor-type="image">
+                                    <img src="<?php echo getContent('blog-post-1-image-src', 'images/post-1.jpg'); ?>" alt="<?php echo getImageAlt('blog-post-1-image-src', 'CHANEL x LEE JUN HO Fashion Week'); ?>">
                                 </figure>
                             </a>
                         </div>
@@ -643,15 +647,15 @@
                         <div class="post-item-body">
                             <!-- Post Item Content Start -->
                             <div class="post-item-content">
-                                <h3><a href="blog-single.html">Exclusive: CHANEL x Damian Valentine Debut Collection at Milan Fashion Week</a></h3>
+                                <h3><a href="blog-single.html" data-editor-id="blog-post-1-title" data-editor-type="text"><?php echo getContent('blog-post-1-title', 'Exclusive: CHANEL x LEE JUN HO Debut Collection at Milan Fashion Week'); ?></a></h3>
                             </div>
                             <!-- Post Item Content End -->
 
                             <!-- Post Meta Start-->
                             <div class="post-meta">
                                 <ul>
-                                    <li>Creative Team</li>
-                                    <li>2 Feb 2025</li>
+                                                                    <li data-editor-id="blog-post-1-author" data-editor-type="text"><?php echo getContent('blog-post-1-author', 'Creative Team'); ?></li>
+                                <li data-editor-id="blog-post-1-date" data-editor-type="text"><?php echo getContent('blog-post-1-date', '2 Feb 2025'); ?></li>
                                 </ul>
                             </div>
                             <!-- Post Meta End-->
@@ -669,8 +673,8 @@
                             <!-- Post Featured Image Start-->
                             <div class="post-featured-image">
                                 <a href="blog-single.html" data-cursor-text="View">
-                                    <figure class="image-anime">
-                                        <img src="/images/post-2.jpg" alt="Cultural Innovation Summit">
+                                    <figure class="image-anime" data-editor-id="blog-post-2-image" data-editor-type="image">
+                                        <img src="<?php echo getContent('blog-post-2-image-src', 'images/post-2.jpg'); ?>" alt="<?php echo getImageAlt('blog-post-2-image-src', 'Cultural Innovation Summit'); ?>">
                                     </figure>
                                 </a>
                             </div>
@@ -680,15 +684,15 @@
                             <div class="post-item-body">
                                 <!-- Post Item Content Start -->
                                 <div class="post-item-content">
-                                    <h3><a href="blog-single.html">Behind the Scenes: CHANEL x Damian Valentine Partnership Launch</a></h3>
+                                    <h3><a href="blog-single.html" data-editor-id="blog-post-2-title" data-editor-type="text"><?php echo getContent('blog-post-2-title', 'Behind the Scenes: CHANEL x LEE JUN HO Partnership Launch'); ?></a></h3>
                                 </div>
                                 <!-- Post Item Content End -->
 
                                 <!-- Post Meta Start-->
                                 <div class="post-meta">
                                     <ul>
-                                    <li>Innovation Team</li>
-                                    <li>9 Feb 2025</li>
+                                                                        <li data-editor-id="blog-post-2-author" data-editor-type="text"><?php echo getContent('blog-post-2-author', 'Innovation Team'); ?></li>
+                                <li data-editor-id="blog-post-2-date" data-editor-type="text"><?php echo getContent('blog-post-2-date', '9 Feb 2025'); ?></li>
                                     </ul>
                                 </div>
                                 <!-- Post Meta End-->
@@ -702,8 +706,8 @@
                             <!-- Post Featured Image Start-->
                             <div class="post-featured-image">
                                 <a href="blog-single.html" data-cursor-text="View">
-                                    <figure class="image-anime">
-                                        <img src="/images/post-3.jpg" alt="Digital Renaissance Project">
+                                    <figure class="image-anime" data-editor-id="blog-post-3-image" data-editor-type="image">
+                                        <img src="<?php echo getContent('blog-post-3-image-src', 'images/post-3.jpg'); ?>" alt="<?php echo getImageAlt('blog-post-3-image-src', 'Digital Renaissance Project'); ?>">
                                     </figure>
                                 </a>
                             </div>
@@ -713,15 +717,15 @@
                             <div class="post-item-body">
                                 <!-- Post Item Content Start -->
                                 <div class="post-item-content">
-                                    <h3><a href="blog-single.html">CHANEL x Damian Valentine: Digital Innovation in Luxury</a></h3>
+                                    <h3><a href="blog-single.html" data-editor-id="blog-post-3-title" data-editor-type="text"><?php echo getContent('blog-post-3-title', 'CHANEL x LEE JUN HO: Digital Innovation in Luxury'); ?></a></h3>
                                 </div>
                                 <!-- Post Item Content End -->
 
                                 <!-- Post Meta Start-->
                                 <div class="post-meta">
                                     <ul>
-                                    <li>Tech Team</li>
-                                    <li>16 Feb 2025</li>
+                                                                        <li data-editor-id="blog-post-3-author" data-editor-type="text"><?php echo getContent('blog-post-3-author', 'Tech Team'); ?></li>
+                                <li data-editor-id="blog-post-3-date" data-editor-type="text"><?php echo getContent('blog-post-3-date', '16 Feb 2025'); ?></li>
                                     </ul>
                                 </div>
                                 <!-- Post Meta End-->
@@ -744,7 +748,7 @@
                 <div class="col-lg-6 col-md-8">
                     <!-- Section Tite Start -->
                     <div class="section-title">
-                        <h2 class="wow fadeInUp">Experience the CHANEL x Damian Valentine collaboration</h2>
+                        <h2 class="wow fadeInUp" data-editor-id="cta-title" data-editor-type="text"><?php echo getContent('cta-title', 'Experience the CHANEL x LEE JUN HO collaboration'); ?></h2>
                     </div>
                     <!-- Section Tite End -->
                 </div>
@@ -752,7 +756,7 @@
                 <div class="col-lg-6 col-md-4">
                     <!-- Section Button Start -->
                     <div class="section-btn wow fadeInUp" data-wow-delay="0.2s">
-                        <a href="#contact" class="btn-default">connect with us</a>
+                        <a href="<?php echo getContent('cta-btn-link', '#contact'); ?>" class="btn-default" data-editor-id="cta-btn-link" data-editor-type="url"><?php echo getContent('cta-btn', 'connect with us'); ?></a>
                     </div>
                     <!-- Section Button End -->
                 </div>
@@ -770,7 +774,7 @@
                     <div class="about-footer">
                         <!-- Footer Logo Start -->
                         <div class="footer-logo">
-                            <img src="/images/logo/logo-chanel.png" alt="CHANEL x Damian Valentine">
+                            <img src="<?php echo getContent('logo-footer', '/images/logo/logo-chanel.png'); ?>" alt="<?php echo getImageAlt('logo-footer', 'CHANEL x LEE JUN HO'); ?>" data-editor-id="logo-footer" data-editor-type="image">
                         </div>
                         <!-- Footer Logo End -->                        
                     </div>
@@ -782,9 +786,9 @@
                     <div class="footer-links footer-contact-box">
                         <h3>office</h3>                        
                         <ul>
-                            <li>Milan - Via del Babuino, 21, 00187 Roma RM, Italy</li>
-                            <li><a href="mailto:partnership@chanel.com">partnership@chanel.com</a></li>
-                            <li><a href="tel:+39 012 345 6789">+39 012 345 6789</a></li>
+                            <li data-editor-id="footer-address" data-editor-type="text"><?php echo getContent('footer-address', 'Milan - Via del Babuino, 21, 00187 Roma RM, Italy'); ?></li>
+                            <li><a href="mailto:<?php echo getContent('footer-email', 'partnership@chanel.com'); ?>" data-editor-id="footer-email" data-editor-type="email"><?php echo getContent('footer-email', 'partnership@chanel.com'); ?></a></li>
+                            <li><a href="tel:<?php echo getContent('footer-phone', '+39 012 345 6789'); ?>" data-editor-id="footer-phone" data-editor-type="phone"><?php echo getContent('footer-phone', '+39 012 345 6789'); ?></a></li>
                         </ul>
                     </div>
                     <!-- Footer Links End -->
@@ -808,7 +812,7 @@
                     <!-- Footer Links start -->
                     <div class="footer-links">
                         <h3>Newsletter</h3>
-                        <p>Subscribe to our newsletter and be the first to know about exclusive CHANEL x Damian Valentine collaboration updates, limited edition releases, and behind-the-scenes content.</p>
+                        <p><?php echo getContent('footer-newsletter', 'Subscribe to our newsletter and be the first to know about exclusive CHANEL x LEE JUN HO collaboration updates, limited edition releases, and behind-the-scenes content.'); ?></p>
                         
                         <!-- Footer Newsletters Form Start -->
                         <div class="footer-newsletters-form">
@@ -830,7 +834,7 @@
                     <div class="footer-copyright">
                         <!-- Footer Copyright Start -->
                         <div class="footer-copyright-text">
-                            <p>Copyright © 2025 CHANEL x Damian Valentine Partnership. All Rights Reserved.</p>
+                            <p><?php echo getContent('footer-copyright', 'Copyright © 2025 CHANEL x LEE JUN HO Partnership. All Rights Reserved.'); ?></p>
                         </div>
                         <!-- Footer Copyright End -->
 
@@ -838,9 +842,9 @@
                         <div class="footer-social-links">
                             <span>Follow us on social</span>
                             <ul>
-                                <li><a href="#"><i class="fa-brands fa-facebook-f"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
+                                <li><a href="<?php echo getContent('footer-facebook', '#'); ?>" data-editor-id="footer-facebook" data-editor-type="url"><i class="fa-brands fa-facebook-f"></i></a></li>
+                                <li><a href="<?php echo getContent('footer-instagram', '#'); ?>" data-editor-id="footer-instagram" data-editor-type="url"><i class="fa-brands fa-instagram"></i></a></li>
+                                <li><a href="<?php echo getContent('footer-twitter', '#'); ?>" data-editor-id="footer-twitter" data-editor-type="url"><i class="fa-brands fa-twitter"></i></a></li>
                             </ul>
                         </div>
                         <!-- Footer Social Link End -->
@@ -891,7 +895,7 @@
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 			// Partnership Animation Script
-			console.log('CHANEL x Damian Valentine Partnership loaded successfully');
+			console.log('CHANEL x LEE JUN HO Partnership loaded successfully');
 			
 			// Smooth scrolling for navigation links
 			const navLinks = document.querySelectorAll('a[href^="#"]');

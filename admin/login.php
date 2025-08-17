@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     if ($username === $admin_username && $password === $admin_password) {
         $_SESSION['admin_logged_in'] = true;
-        header('Location: ../index.html?admin=1');
+        header('Location: /?admin=1');
         exit();
     } else {
         $error = 'Invalid credentials';
